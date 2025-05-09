@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Title>AArkhipenko.UserHelper</Title>
+		<PackageId>AArkhipenko.UserHelper</PackageId>
+		<Version>7.0.0</Version>
+		<Authors>Arkhipenko Aleksey</Authors>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<RepositoryUrl>https://github.com/AArkhipenko/AArkhipenko.UserHelper</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AArkhipenko.Core" Version="7.0.0" />
+		<PackageReference Include="Dapper" Version="2.1.66" />
+		<PackageReference Include="Npgsql" Version="9.0.3" />
+	</ItemGroup>
+
+</Project>
