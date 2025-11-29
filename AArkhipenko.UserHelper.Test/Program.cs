@@ -10,8 +10,9 @@ builder.Configuration.AddYamlFile("DebugConfig.yml", false);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddKeycloakAuth(builder.Configuration);
-// Добавление провайдера для работы с пользователями
-builder.Services.AddNpgsqlUserProvider();
+
+// Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕРіСЂР°РјРјС‹ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+builder.Services.AddUserHelper(builder.Configuration);
 
 var app = builder.Build();
 

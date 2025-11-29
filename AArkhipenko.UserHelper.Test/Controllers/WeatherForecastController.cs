@@ -1,4 +1,4 @@
-using AArkhipenko.UserHelper.Providers;
+using AArkhipenko.UserHelper.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,21 +14,21 @@ public class WeatherForecastController : ControllerBase
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly IUserProvider _userProvider;
+    private readonly IUserHelper _userHelper;
     private readonly ILogger<WeatherForecastController> _logger;
 
     public WeatherForecastController(
-        IUserProvider userProvider,
+        IUserHelper userHelper,
         ILogger<WeatherForecastController> logger)
     {
-        _userProvider = userProvider;
+        _userHelper = userHelper;
         _logger = logger;
     }
 
     [HttpGet]
     public async Task<IEnumerable<WeatherForecast>> Get(CancellationToken cancellationToken = default)
     {
-        var userModel = await _userProvider.GetUserAsync(cancellationToken);
+        var userModel = await _userHelper.GetUserAsync(cancellationToken);
         _logger.LogInformation($"UserId = {userModel.Id}");
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
