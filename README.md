@@ -1,13 +1,13 @@
 ﻿# AArkhipenko.UserHelper
 
-Nuget-проект с настройками провайдера для работы с пользователем.
+Nuget-проект с настройками программой, котора позволяет определить пользователя по токену.
 
 
 ## Методы расширения
 
 Все методы расширения находятся [здесь](./AArkhipenko.UserHelper/UserHelperExtension.cs)
 
-### Провайдер для работы с пользователем (PostgreSQL)
+### Программа для определения пользователя
 
 Подключение:
 ```C#
@@ -15,8 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 ...
-// Добавление провайдера для работы с пользователями
-builder.Services.AddNpgsqlUserProvider();
+// Регистрация программы для определения пользователя
+builder.Services.AddUserHelper(builder.Configuration);
 ...
 var app = builder.Build();
 app.UseAuthorization();
@@ -31,10 +31,8 @@ app.Run();
 Для настройки программы провайдер конфигурации должен иметь разделы:
 ```yml
 ...
-DatabaseSettings:
-    CommandTimeout: 30000
-
-ConnectionStrings:
-    UserDb: "Host=aid-kit.arkhipenko.lan;Port=60001;Database=aid_kit_db;Username=application_user;Password=application_user"
+UserHelper:
+  UserService:
+    Url: http://user-service.url
 ...
 ```
